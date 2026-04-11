@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science Interview Preparation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem;
+    }
+    .wrapper {
+      text-align: center;
+      max-width: 720px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899, #f59e0b, #059669);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 3rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem 2rem 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 20px 20px 0 0;
+      transition: height 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+    }
+    .card:hover::before { height: 6px; }
+    .card:hover .icon { transform: scale(1.15); }
+
+    /* Mock Interview - Indigo */
+    .card.mock::before { background: linear-gradient(90deg, #6366f1, #818cf8); }
+    .card.mock:hover { border-color: #a5b4fc; }
+    .card.mock .card-title { color: #3730a3; }
+
+    /* Topicwise - Emerald */
+    .card.topics::before { background: linear-gradient(90deg, #059669, #34d399); }
+    .card.topics:hover { border-color: #6ee7b7; }
+    .card.topics .card-title { color: #065f46; }
+
+    .icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem auto;
+      display: block;
+      transition: transform 0.3s;
+      object-fit: contain;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .card.mock .badge { background: #eef2ff; color: #4338ca; }
+    .card.topics .badge { background: #ecfdf5; color: #047857; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>ScholarPrep</h1>
+    <p class="subtitle">Choose your preparation mode</p>
+    <div class="cards">
+      <a class="card mock" href="mock-interview.html">
+        <img src="icons/interview.png" class="icon" alt="Mock Interview">
+        <div class="card-title">Mock Interview</div>
+        <div class="card-desc">Simulate a real interview experience with timed questions and evaluation</div>
+      </a>
+      <a class="card topics" href="topics.html">
+        <img src="icons/questions.png" class="icon" alt="Topicwise Practice">
+        <div class="card-title">Topicwise Questions Practice</div>
+        <div class="card-desc">Browse and practice questions organized by Linear Algebra, Probability &amp; Statistics, and Machine Learning</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -134,7 +134,7 @@
 <body>
 
 <div class="top-bar">
-  <a class="back-link" href="index.html">&#8592; Home</a>
+  <a class="back-link" href="../">&#8592; Home</a>
   <div class="top-title">Mock Interview</div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="countDisplay" style="padding:5px 12px;border-radius:20px;background:rgba(99,102,241,0.08);color:#4338ca;font-size:13px;font-weight:600">Q: 0 / 0</span>
@@ -180,7 +180,7 @@
 let ALL_QUESTIONS = [];
 
 async function loadQuestions() {
-  const res = await fetch('questions_data.json');
+  const res = await fetch('../questions_data.json');
   const json = await res.json();
   ALL_QUESTIONS = [];
   json.forEach(subj => {

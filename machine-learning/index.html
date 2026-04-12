@@ -1,60 +1,59 @@
 <meta charset="UTF-8">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 50%,#ecfdf5 100%);min-height:100vh;color:#0f172a}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 50%,#fffbeb 100%);min-height:100vh;color:#1c1917}
 .container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
-.back-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#047857;font-size:13px;font-weight:500;margin-bottom:1.5rem;padding:6px 14px;border-radius:10px;background:rgba(16,185,129,0.08);transition:all 0.2s}
-.back-link:hover{background:rgba(16,185,129,0.2);transform:translateX(-2px)}
-.header{margin-bottom:1.5rem}
-.header h2{font-size:18px;font-weight:500;color:#0f172a;margin-bottom:4px}
-.header p{font-size:14px;color:#6b7280}
+.back-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#b45309;font-size:13px;font-weight:500;margin-bottom:1.5rem;padding:6px 14px;border-radius:10px;background:rgba(234,179,8,0.1);transition:all 0.2s}
+.back-link:hover{background:rgba(234,179,8,0.22);transform:translateX(-2px)}
+.header h2{font-size:18px;font-weight:500;color:#1c1917;margin-bottom:4px}
+.header p{font-size:14px;color:#6b7280;margin-bottom:1.5rem}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:1.5rem}
-.stat{background:#f0fdf9;border-radius:10px;padding:10px 12px}
-.stat-n{font-size:22px;font-weight:500;color:#0f172a}
+.stat{background:#fef9ee;border-radius:10px;padding:10px 12px}
+.stat-n{font-size:22px;font-weight:500;color:#1c1917}
 .stat-l{font-size:12px;color:#6b7280;margin-top:2px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
-.tab{padding:8px 18px;border-radius:12px;border:1.5px solid #a7f3d0;font-size:13px;cursor:pointer;background:#fff;color:#6b7280;transition:all 0.25s ease;font-weight:500}
-.tab.active{background:linear-gradient(135deg,#059669,#34d399);border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(5,150,105,0.35)}
-.tab:hover:not(.active){background:#d1fae5;border-color:#6ee7b7;color:#065f46;transform:translateY(-1px)}
+.tab{padding:8px 18px;border-radius:12px;border:1.5px solid #fde68a;font-size:13px;cursor:pointer;background:#fff;color:#6b7280;transition:all 0.25s ease;font-weight:500}
+.tab.active{background:linear-gradient(135deg,#f59e0b,#fbbf24);border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(245,158,11,0.35)}
+.tab:hover:not(.active){background:#fef3c7;border-color:#fbbf24;color:#92400e;transform:translateY(-1px)}
 .section{margin-bottom:2rem}
-.section-title{font-size:16px;font-weight:600;color:#065f46;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #a7f3d0;letter-spacing:-0.01em}
+.section-title{font-size:16px;font-weight:600;color:#92400e;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #fde68a;letter-spacing:-0.01em}
 .qcard{background:#fff;border:1px solid #e5e7eb;border-radius:14px;margin-bottom:10px;overflow:hidden;transition:all 0.25s ease;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-.qcard:hover{border-color:#a7f3d0;box-shadow:0 4px 20px rgba(5,150,105,0.12);transform:translateY(-1px)}
+.qcard:hover{border-color:#fde68a;box-shadow:0 4px 20px rgba(245,158,11,0.12);transform:translateY(-1px)}
 .qcard-header{padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:12px;user-select:none;transition:background 0.2s}
-.qcard-header:hover{background:#f0fdf9}
-.qnum{min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#065f46}
-.q-text{font-size:14px;color:#0f172a;line-height:1.6;flex:1}
+.qcard-header:hover{background:#fffdf5}
+.qnum{min-width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e}
+.q-text{font-size:14px;color:#1c1917;line-height:1.6;flex:1}
 .arrow{font-size:12px;color:#a0a0b0;flex-shrink:0;margin-top:5px;transition:transform 0.3s ease}
-.arrow.open{transform:rotate(90deg);color:#059669}
+.arrow.open{transform:rotate(90deg);color:#f59e0b}
 .qcard-body{padding:0 16px 16px 56px;display:none;animation:fadeIn 0.3s ease}
 .qcard-body.open{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.followup-label{font-size:11px;font-weight:600;color:#059669;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px}
-.followup{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:10px;margin-bottom:6px;line-height:1.5;border-left:3px solid #34d399;cursor:pointer;transition:all 0.2s}
-.followup:hover{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-left-color:#059669}
+.fu-label{font-size:11px;font-weight:600;color:#d97706;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;margin-top:4px}
+.fu{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#fffbeb,#fef3c7);border-radius:10px;margin-bottom:6px;line-height:1.5;border-left:3px solid #fbbf24;cursor:pointer;transition:all 0.2s}
+.fu:hover{background:linear-gradient(135deg,#fef3c7,#fde68a);border-left-color:#f59e0b}
 .fu-practice{margin-top:4px;margin-bottom:10px}
 .hint-label{font-size:11px;font-weight:600;color:#1d4ed8;text-transform:uppercase;letter-spacing:0.08em;margin-top:12px;margin-bottom:8px}
 .hint{font-size:13px;color:#4b5563;padding:8px 12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:10px;line-height:1.5;border-left:3px solid #60a5fa}
-.difficulty{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;margin-left:auto;flex-shrink:0;align-self:center;letter-spacing:0.02em}
+.diff{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;margin-left:auto;flex-shrink:0;align-self:center;letter-spacing:0.02em}
 .d-basic{background:#dcfce7;color:#166534}
 .d-medium{background:#fef3c7;color:#92400e}
 .d-hard{background:#fee2e2;color:#991b1b}
-.practice-btn{display:block;margin-top:12px;padding:8px 14px;background:#fff;border:1.5px solid #a7f3d0;border-radius:10px;font-size:13px;color:#047857;cursor:pointer;width:100%;text-align:left;transition:all 0.2s;font-weight:500}
-.practice-btn:hover{background:#ecfdf5;border-color:#6ee7b7;box-shadow:0 2px 8px rgba(5,150,105,0.1)}
+.pbtn{display:block;margin-top:12px;padding:8px 14px;background:#fff;border:1.5px solid #fde68a;border-radius:10px;font-size:13px;color:#b45309;cursor:pointer;width:100%;text-align:left;transition:all 0.2s;font-weight:500}
+.pbtn:hover{background:#fffbeb;border-color:#fbbf24;box-shadow:0 2px 8px rgba(245,158,11,0.1)}
 .hint-toggle{display:inline-block;margin-top:10px;padding:6px 14px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;font-size:12px;color:#2563eb;cursor:pointer;font-weight:600;transition:all 0.2s}
 .hint-toggle:hover{background:#dbeafe;border-color:#93c5fd}
 .hint-content{display:none;margin-top:8px}
 .hint-content.visible{display:block}
 .practice-area{margin-top:12px;display:none}
 .practice-area.visible{display:block}
-.practice-area textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:13px;font-family:inherit;color:#0f172a;resize:vertical;line-height:1.5;background:#fafbff}
-.practice-area textarea:focus{outline:none;border-color:#6ee7b7;box-shadow:0 0 0 3px rgba(110,231,183,0.15)}
+.practice-area textarea{width:100%;min-height:90px;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:13px;font-family:inherit;color:#1c1917;resize:vertical;line-height:1.5;background:#fafbff}
+.practice-area textarea:focus{outline:none;border-color:#fbbf24;box-shadow:0 0 0 3px rgba(251,191,36,0.15)}
 .practice-buttons{display:flex;gap:8px;margin-top:8px;align-items:center}
-.practice-submit{padding:8px 20px;border:none;border-radius:10px;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,#059669,#34d399);cursor:pointer;transition:all 0.2s;box-shadow:0 3px 10px rgba(5,150,105,0.25)}
-.practice-submit:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(5,150,105,0.35)}
+.practice-submit{padding:8px 20px;border:none;border-radius:10px;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,#f59e0b,#fbbf24);cursor:pointer;transition:all 0.2s;box-shadow:0 3px 10px rgba(245,158,11,0.25)}
+.practice-submit:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(245,158,11,0.35)}
 .practice-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
-.hint-btn{padding:8px 16px;border:1.5px solid #a7f3d0;border-radius:10px;font-size:13px;font-weight:600;color:#047857;background:#ecfdf5;cursor:pointer;transition:all 0.2s}
-.hint-btn:hover{background:#d1fae5;border-color:#6ee7b7}
+.hint-btn{padding:8px 16px;border:1.5px solid #fde68a;border-radius:10px;font-size:13px;font-weight:600;color:#b45309;background:#fffbeb;cursor:pointer;transition:all 0.2s}
+.hint-btn:hover{background:#fef3c7;border-color:#fbbf24}
 .mic-btn{padding:8px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:13px;font-weight:500;color:#64748b;background:#fff;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px}
 .mic-btn:hover{background:#fef2f2;border-color:#fca5a5;color:#dc2626}
 .mic-btn.recording{background:#fee2e2;border-color:#f87171;color:#dc2626;animation:micPulse 1s ease-in-out infinite}
@@ -67,29 +66,28 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 .eval-score.high{background:#dcfce7;color:#166534}
 .eval-score.mid{background:#fef3c7;color:#92400e}
 .eval-score.low{background:#fee2e2;color:#991b1b}
-.eval-ideal{margin-top:8px;padding:10px 12px;background:rgba(255,255,255,0.7);border-radius:8px;font-size:13px;line-height:1.6;color:#0f172a}
-.eval-ideal strong{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#059669;display:block;margin-bottom:4px}
+.eval-ideal{margin-top:8px;padding:10px 12px;background:rgba(255,255,255,0.7);border-radius:8px;font-size:13px;line-height:1.6;color:#1c1917}
+.eval-ideal strong{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#f59e0b;display:block;margin-bottom:4px}
 .eval-feedback{margin-top:6px;font-size:13px;color:#475569;font-style:italic}
 .eval-loading{display:flex;align-items:center;gap:10px;color:#64748b;font-size:13px;margin-top:12px}
-.eval-spinner{width:16px;height:16px;border:2.5px solid #e2e8f0;border-top-color:#059669;border-radius:50%;animation:spin 0.7s linear infinite}
+.eval-spinner{width:16px;height:16px;border:2.5px solid #e2e8f0;border-top-color:#f59e0b;border-radius:50%;animation:spin 0.7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
-
 <div class="container">
-<a class="back-link" href="topics.html">&#8592; Back to Topics</a>
+<a class="back-link" href="../topics/">&#8592; Back to Topics</a>
 
 <div class="tabs" id="tabsContainer">
   <div class="tab active" onclick="showTab('all',this)">All topics</div>
 </div>
 <div id="qbank"></div>
 </div>
-
 <script>
-const SUBJECT = 'Probability and Statistics';
-let data = [];
+const SUBJECT = 'Machine Learning';
+let D = [];
+let cur='all';
 
 async function loadData() {
-  const res = await fetch('questions_data.json');
+  const res = await fetch('../questions_data.json');
   const json = await res.json();
   const subjectData = json.find(s => s.subject === SUBJECT);
   if (!subjectData) return;
@@ -98,81 +96,56 @@ async function loadData() {
     if (!topicMap.has(q.topic)) topicMap.set(q.topic, []);
     topicMap.get(q.topic).push({ q: q.text, d: q.difficulty, fu: q.followups || [], hint: q.hint || '' });
   });
-  data = Array.from(topicMap.entries()).map(([label, qs]) => ({
+  D = Array.from(topicMap.entries()).map(([label, qs]) => ({
     topic: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, ''),
-    topicLabel: label,
+    label,
     qs
   }));
   buildTabs();
-  renderQuestions();
+  render();
 }
 
 function buildTabs() {
   const container = document.getElementById('tabsContainer');
   container.innerHTML = '<div class="tab active" onclick="showTab(\'all\',this)">All topics</div>';
-  data.forEach(s => {
-    const shortLabel = s.topicLabel.replace(/&/g, '&amp;').split(/\s+/).slice(0, 3).join(' ');
+  D.forEach(s => {
+    const shortLabel = s.label.replace(/&/g, '&amp;').split(/\s+/).slice(0, 2).join(' ');
     container.innerHTML += `<div class="tab" onclick="showTab('${s.topic}',this)">${shortLabel}</div>`;
   });
 }
 
-let currentTopic = 'all';
-function showTab(topic,el){
-  currentTopic=topic;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  renderQuestions();
-}
-function renderQuestions(){
-  const bank=document.getElementById('qbank');
-  bank.innerHTML='';
+function showTab(t,el){cur=t;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');render();}
+function render(){
+  const bank=document.getElementById('qbank');bank.innerHTML='';
   let qi=0;
-  const numC=['#0F6E56','#534AB7','#993C1D','#185FA5','#854F0B','#993556','#3B6D11'];
-  const numB=['#E1F5EE','#EEEDFE','#FAECE7','#E6F1FB','#FAEEDA','#FBEAF0','#EAF3DE'];
+  const nc=['#854F0B','#534AB7','#0F6E56','#185FA5','#993C1D','#993556','#3B6D11'];
+  const nb=['#FAEEDA','#EEEDFE','#E1F5EE','#E6F1FB','#FAECE7','#FBEAF0','#EAF3DE'];
   const dc={basic:'d-basic',medium:'d-medium',hard:'d-hard'};
-  data.forEach((section,si)=>{
-    if(currentTopic!=='all'&&section.topic!==currentTopic)return;
-    const sec=document.createElement('div');
-    sec.className='section';
-    sec.innerHTML=`<div class="section-title">${section.topicLabel}</div>`;
-    section.qs.forEach((item,idx)=>{
-      qi++;
-      const ci=si%numC.length;
-      const card=document.createElement('div');
-      card.className='qcard';
-      const bid=`b-${si}-${idx}`, aid=`a-${si}-${idx}`;
+  D.forEach((sec,si)=>{
+    if(cur!=='all'&&sec.topic!==cur)return;
+    const s=document.createElement('div');s.className='section';
+    s.innerHTML=`<div class="section-title">${sec.label}</div>`;
+    sec.qs.forEach((item,idx)=>{
+      qi++;const ci=si%nc.length;
+      const card=document.createElement('div');card.className='qcard';
+      const bid=`b${si}_${idx}`,aid=`a${si}_${idx}`;
       let fu='';
-      if(item.fu&&item.fu.length){
-        fu+=`<div class="followup-label">Follow-up probes</div>`;
-        item.fu.forEach((f,fi)=>{
-          const fuPractId=`fupract-${si}-${idx}-${fi}`;
-          fu+=`<div class="followup" onclick="openPractice('${fuPractId}',null)">↳ ${f}</div>`;
-          fu+=`<div class="fu-practice"><div class="practice-area" id="${fuPractId}" data-question="${f.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${fuPractId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${fuPractId}')">🎤 Speak</button></div><div class="mic-status" id="mic-status-${fuPractId}"></div><div class="eval-container"></div></div></div>`;
-        });
-      }
-      const practId=`pract-${si}-${idx}`;
-      const hintId=`hint-${si}-${idx}`;
+      if(item.fu&&item.fu.length){fu+=`<div class="fu-label">Follow-up probes</div>`;item.fu.forEach((f,fi)=>{
+        const fuPractId=`fupract-${si}_${idx}_${fi}`;
+        fu+=`<div class="fu" onclick="openPractice('${fuPractId}',null)">↳ ${f}</div>`;
+        fu+=`<div class="fu-practice"><div class="practice-area" id="${fuPractId}" data-question="${f.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${fuPractId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${fuPractId}')">🎤 Speak</button></div><div class="mic-status" id="mic-status-${fuPractId}"></div><div class="eval-container"></div></div></div>`;
+      });}
+      const practId=`pract-${si}_${idx}`;
+      const hintId=`hint-${si}_${idx}`;
       const hintBtnHtml=item.hint?`<button class="hint-btn" onclick="document.getElementById('${hintId}').classList.toggle('visible')">💡Hint</button>`:'';
       const hintContentHtml=item.hint?`<div class="hint-content" id="${hintId}"><div class="hint-label">Professor's note</div><div class="hint">${item.hint}</div></div>`:'';
       const pb=`<div class="practice-area visible" id="${practId}" data-question="${item.q.replace(/"/g,'&quot;')}" data-subject="${SUBJECT}"><textarea placeholder="Type your answer here..."></textarea><div class="practice-buttons"><button class="practice-submit" onclick="submitPractice('${practId}')">Submit Answer</button><button class="mic-btn" onclick="toggleVoice('${practId}')">🎤 Speak</button>${hintBtnHtml}</div>${hintContentHtml}<div class="mic-status" id="mic-status-${practId}"></div><div class="eval-container"></div></div>`;
-      card.innerHTML=`
-        <div class="qcard-header" onclick="tog('${bid}','${aid}')">
-          <div class="qnum" style="background:${numB[ci]};color:${numC[ci]}">${qi}</div>
-          <div class="q-text">${item.q}</div>
-          <div class="difficulty ${dc[item.d]}">${item.d}</div>
-          <div class="arrow" id="${aid}">▶</div>
-        </div>
-        <div class="qcard-body" id="${bid}">${pb}${fu}</div>`;
-      sec.appendChild(card);
-    });
-    bank.appendChild(sec);
+      card.innerHTML=`<div class="qcard-header" onclick="tog('${bid}','${aid}')"><div class="qnum" style="background:${nb[ci]};color:${nc[ci]}">${qi}</div><div class="q-text">${item.q}</div><div class="diff ${dc[item.d]}">${item.d}</div><div class="arrow" id="${aid}">▶</div></div><div class="qcard-body" id="${bid}">${pb}${fu}</div>`;
+      s.appendChild(card);
+    });bank.appendChild(s);
   });
 }
-function tog(bid,aid){
-  const b=document.getElementById(bid),a=document.getElementById(aid);
-  const o=b.classList.contains('open');
-  b.classList.toggle('open',!o);a.classList.toggle('open',!o);
-}
+function tog(bid,aid){const b=document.getElementById(bid),a=document.getElementById(aid);const o=b.classList.contains('open');b.classList.toggle('open',!o);a.classList.toggle('open',!o);}
 
 // ===== Practice & Evaluation =====
 const GROQ_API_KEY = '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';

@@ -76,7 +76,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear
 </style>
 
 <div class="container">
-<a class="back-link" href="topics.html">&#8592; Back to Topics</a>
+<a class="back-link" href="../topics/">&#8592; Back to Topics</a>
 
 <div class="tabs" id="tabsContainer">
   <div class="tab active" onclick="showTab('all',this)">All topics</div>
@@ -91,7 +91,7 @@ let data = [];
 let currentTopic = 'all';
 
 async function loadData() {
-  const res = await fetch('questions_data.json');
+  const res = await fetch('../questions_data.json');
   const json = await res.json();
   const subjectData = json.find(s => s.subject === SUBJECT);
   if (!subjectData) return;

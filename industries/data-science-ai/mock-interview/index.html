@@ -134,7 +134,7 @@
 <body>
 
 <div class="top-bar">
-  <a class="back-link" href="../">&#8592; Home</a>
+  <a class="back-link" href="../">&#8592; Data Science / AI</a>
   <div class="top-title">Mock Interview</div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="countDisplay" style="padding:5px 12px;border-radius:20px;background:rgba(99,102,241,0.08);color:#4338ca;font-size:13px;font-weight:600">Q: 0 / 0</span>
@@ -180,17 +180,23 @@
 let ALL_QUESTIONS = [];
 
 async function loadQuestions() {
-  const res = await fetch('../questions_data.json');
+  const res = await fetch('../data/questions_data_updated.json');
   const json = await res.json();
   ALL_QUESTIONS = [];
   json.forEach(subj => {
     subj.questions.forEach(q => {
+      const normalizedFollowups = (q.followups || []).map(f => {
+        if (typeof f === 'string') {
+          return { q: f, d: q.difficulty || 'medium' };
+        }
+        return { q: f.text || '', d: f.difficulty || q.difficulty || 'medium' };
+      }).filter(f => f.q);
       ALL_QUESTIONS.push({
         subject: subj.subject,
         topic: q.topic,
         q: q.text,
         d: q.difficulty,
-        fu: q.followups || [],
+        fu: normalizedFollowups,
         hint: q.hint || ''
       });
     });
@@ -434,19 +440,21 @@ function nextQuestion() {
 
 function renderQuestion(isFollowUp) {
   const card = document.getElementById('questionCard');
-  const diffClass = currentQ.d === 'basic' ? 'bd-basic' : currentQ.d === 'medium' ? 'bd-medium' : 'bd-hard';
+  const currentFollowUp = isFollowUp ? currentQ.fu[fuIndex - 1] : null;
+  const activeDiff = currentFollowUp ? currentFollowUp.d : currentQ.d;
+  const diffClass = activeDiff === 'basic' ? 'bd-basic' : activeDiff === 'medium' ? 'bd-medium' : 'bd-hard';
   const qLabel = isFollowUp ? 'FOLLOW-UP QUESTION' : 'QUESTION';
   const countLabel = isFollowUp
     ? `Follow-up ${fuIndex} of ${currentQ.fu ? currentQ.fu.length : 0}`
     : `Question ${mainQCount} of ${totalMainQs}`;
-  const questionText = isFollowUp ? currentQ.fu[fuIndex - 1] : currentQ.q;
+  const questionText = currentFollowUp ? currentFollowUp.q : currentQ.q;
   const fuAvail = '';
 
   card.innerHTML = `
     <div class="q-meta">
       <span class="q-badge badge-subject">${currentQ.subject}</span>
       <span class="q-badge badge-subtopic">${currentQ.topic}</span>
-      <span class="q-badge badge-diff ${diffClass}">${currentQ.d}</span>
+      <span class="q-badge badge-diff ${diffClass}">${activeDiff}</span>
       <span class="q-badge badge-count">${countLabel}</span>
     </div>
     <div class="q-label">${qLabel}</div>
@@ -466,7 +474,7 @@ async function submitAnswer() {
   if (!answer) return;
 
   const isFollowUp = fuIndex > 0;
-  const qText = isFollowUp ? currentQ.fu[fuIndex - 1] : currentQ.q;
+  const qText = isFollowUp ? currentQ.fu[fuIndex - 1].q : currentQ.q;
 
   // add to chat
   addChatBubble('q', isFollowUp ? 'Follow-up' : 'Question', qText);
